@@ -1,15 +1,18 @@
-const { default: mongoose } = require("mongoose");
-const bcrypt = require(bcrypt)
-const { schema } = require("normalizr");
+const mongoose= require("mongoose");
+const bcrypt = require('bcrypt')
+const {Schema } = mongoose;
 
 
-new schema({
-    user: String,
+const userSchema = new Schema({
+    username: String,
     password: String
 });
 
 userSchema.methods.encryptPassword = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+}
+userSchema.methods.comparePassword = function(password){
+    return bcrypt.compareSync(password, this.password)
 }
 
 module.exports = mongoose.model('users',userSchema);

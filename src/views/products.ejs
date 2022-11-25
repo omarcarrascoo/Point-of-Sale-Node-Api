@@ -1,6 +1,6 @@
-<%- layout('layout/main.ejs')%>
-<main style="margin-top: 40px;" class="container-sm mt-30 flex-wrap">
-        <h1 style="margin-bottom: 20px;">Porductos en venta</h1>
+<%- layout('layout/admin.ejs')%>
+    <main class="container-sm mt-30 flex-wrap" style="margin-top: 50px;">
+        <h1 style="margin-bottom: 20px;">Porductos de la tienda</h1>
         <div class="d-flex  flex-wrap justify-content-around">
             <div class="card me-auto mt-30" style="width: 18rem;">
                 <img src="https://coca-colafemsa.com/wp-content/uploads/2019/11/2.png" class="card-img-top" alt="Imagen del Producto">
@@ -13,7 +13,8 @@
                     <li class="list-group-item">Bebidas</li>
                 </ul>
                 <div class="card-body">
-                    <button class="btn btn-success">Agregar producto</button>
+                    <button class="btn btn-warning">Editar</button>
+                    <button class="btn btn-danger">Eliminar</button>
                 </div>
             </div>
         </div>
