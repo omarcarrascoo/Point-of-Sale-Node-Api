@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash');
+const yargs = require('yargs')
 
 
 //inicializaciones
@@ -39,9 +40,10 @@ app.use('/',require('./routes/index.routes'))
 app.set('views', path.join(__dirname, 'views') )
 app.engine('ejs', engine);
 app.set('view engine', 'ejs')
-app.set('port', process.env.PORT || 2002);
+PORT = yargs.argv
+// app.set('port', PORT.puerto || 2002);
 
 //inicio de servidor
-app.listen(app.get('port'), ()=>{
-    console.log(`Servidor corriendo en el puerto ${app.get('port')}`);
+app.listen(PORT.puerto, ()=>{
+    console.log(`Servidor corriendo en el puerto ${PORT.puerto}`);
 })
