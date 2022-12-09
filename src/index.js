@@ -40,10 +40,10 @@ app.use('/',require('./routes/index.routes'))
 app.set('views', path.join(__dirname, 'views') )
 app.engine('ejs', engine);
 app.set('view engine', 'ejs')
-PORT = yargs.argv
+PORT = yargs.argv.PORT
 // app.set('port', PORT.puerto || 2002);
 
 //inicio de servidor
-app.listen(PORT.puerto, ()=>{
-    console.log(`Servidor corriendo en el puerto ${PORT.puerto}`);
+app.listen(PORT, ()=>{
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 })
