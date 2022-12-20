@@ -32,6 +32,9 @@ app.use((req, res, next) =>{
     next();
 })
 
+
+
+
 //Routes
 app.use('/',require('./routes/index.routes'))
 

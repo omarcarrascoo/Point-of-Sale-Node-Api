@@ -1,7 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-const {fork} = require('child_process')
+const {fork} = require('child_process');
+const compression = require('compression');
 
 
 router.get('/', (req, res, next) => {
@@ -23,13 +24,28 @@ router.get('/info', (req, res, next) => {
 });
 
 
-router.get('/api/random:num',(req,res,next)=>{
+router.get('/random:num',compression(),(req,res,next)=>{
+    const num = req.params.num;
+    if (num == 0) {
+        return res('No esta definido la cantidad de numeros imprir')
+    }
+    const child = fork('./src/randomChild/calculoChild.js')
+    child.send(num)
+    child.on("message", (message)=>{
+        console.log(message);
+        res.send(message)
+    })
+    child.on("exit", (code) =>{
+        console.log('Child Exit with code', code);
+    })
+})
+router.get('/randomzip:num',compression(),(req,res,next)=>{
     const num = req.params.num;
     const child = fork('./src/randomChild/calculoChild.js')
     child.send(num)
     child.on("message", (message)=>{
         console.log(message);
-        res.json(message)
+        res.send(message)
     })
     child.on("exit", (code) =>{
         console.log('Child Exit with code', code);
