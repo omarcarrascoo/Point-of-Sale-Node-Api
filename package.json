@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "start": "pm2 start src/index.js --name servidor1  --watch -- --PORT 8081"
   },
   "keywords": [],
   "author": "",
