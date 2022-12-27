@@ -43,7 +43,8 @@ app.use('/',require('./routes/index.routes'))
 app.set('views', path.join(__dirname, 'views') )
 app.engine('ejs', engine);
 app.set('view engine', 'ejs')
-PORT = yargs.argv.PORT
+// PORT = yargs.argv.PORT
+PORT = 4000
 // app.set('port', PORT.puerto || 2002);
 
 //inicio de servidor
