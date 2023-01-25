@@ -10,7 +10,7 @@ const yargs = require('yargs')
 
 //inicializaciones
 const app = express();
-require('./database');
+require('./db/database');
 require('./passport/local-auth')
 
 //Middleware
