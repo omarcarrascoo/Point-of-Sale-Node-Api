@@ -1,20 +1,33 @@
 <%- layout('layout/main.ejs')%>
-<main style="margin-top: 40px;" class="container-sm mt-30 flex-wrap">
-        <h1 style="margin-bottom: 20px;">Productos en venta</h1>
+    <main class="container-sm mt-30 flex-wrap" style="margin-top: 50px;">
+        <h1 style="margin-bottom: 20px;">Editar productos</h1>
         <div class="d-flex  flex-wrap justify-content-around">
-            <div class="card me-auto mt-30" style="width: 18rem;">
-                <img src="https://coca-colafemsa.com/wp-content/uploads/2019/11/2.png" class="card-img-top" alt="Imagen del Producto">
-                <div class="card-body">
-                    <h5 class="card-title">Coca Cola</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">$74.00</li>
-                    <li class="list-group-item">Stock: 6</li>
-                    <li class="list-group-item">Bebidas</li>
-                </ul>
-                <div class="card-body">
-                    <button class="btn btn-success">Agregar producto</button>
-                </div>
-            </div>
+            <% for (var i = 0; i < data.length; i++) { %>
+                <div class="card me-auto mt-30" style="width: 18rem; margin-bottom: 20px;">
+                    <img src="<%= data[i].productImg %>" class="card-img-top" alt="Imagen del Producto" style=" object-fit:cover; max-height: 300px; min-height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= data[i].productName %></h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">$<%= data[i].productPrice %></li>
+                        <li class="list-group-item">Stock: <%= data[i].productStock %></li>
+                        <li class="list-group-item"><%= data[i].productCategory %></li>
+                    </ul>
+                    <%if (user){%>
+                        <div class="card-body">
+                            <button class="btn btn-warning">Editar</button>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </div>
+                    <%}
+                    else{%>
+                        <div class="card-body">
+                            <button class="btn btn-success">Agregar producto</button>
+                        </div>
+                    <%}
+                    %>
+                    
+                </div> 
+              <% } %>
+              
         </div>
     </main>

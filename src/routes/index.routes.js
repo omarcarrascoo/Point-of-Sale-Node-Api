@@ -3,7 +3,7 @@ const router = express.Router();
 const compression = require('compression');
 const {watchInfo, randomNumGenerator, watchIndex} = require('../controllers/info_controller');
 const { renderSignUp, userSignUp, renderLogin, userLogin, userLogout } = require('../controllers/user_controler');
-const { viewPorducts } = require('../controllers/products_container');
+const { viewPorducts, createProduct, newProduct } = require('../controllers/products_controller');
 const { isAuthenticated } = require('../middlewares/auth.Middleware');
 
 
@@ -23,7 +23,8 @@ router.get('/logout', userLogout )
 
 //PRODUCTS ROUTES
 router.get('/productos', isAuthenticated, viewPorducts)
-
+router.get('/newProduct', isAuthenticated, newProduct)
+router.post('/newProduct', isAuthenticated, createProduct)
 
 
 module.exports = router;

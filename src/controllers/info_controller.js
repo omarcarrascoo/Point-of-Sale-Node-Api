@@ -1,7 +1,11 @@
 const {fork} = require('child_process');
+const Product = require ('../models/products_model.js')
 
 const watchIndex = (req, res, next) => {
-    res.render('index')
+    Product.find({}, (err, docs)=>{
+        if (err) throw err;
+        res.render('index', {data: docs})
+    })
 }
 
 const watchInfo = (req, res, next) => {
