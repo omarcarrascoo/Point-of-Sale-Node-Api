@@ -1,26 +1,26 @@
 <%- layout('layout/main.ejs')%>
     <main class="container-sm mt-30 flex-wrap" style="margin-top: 50px;">
         <h1 style="margin-bottom: 20px;">Añadir Productos</h1>
-        <form class="container-sm" method="post" action="/newProduct">
+        <form class="container-sm" method="post" action="/update/<%= data._id %>">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nombre del Producto</label>
-              <input type="text" class="form-control" id="exampleInputEmail" name="nameProduct">
+              <label for="exampleInputEmail1" class="form-label" >Nombre del Producto</label>
+              <input type="text" class="form-control" id="exampleInputEmail" name="nameProduct" value="<%= data.productName %>">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">URL de la imagen</label>
-                <input type="text" class="form-control" id="exampleInputEmail" name="imgProduct">
+                <input type="text" class="form-control" id="exampleInputEmail" name="imgProduct" value="<%= data.productImg %>">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Categoria</label>
-                <input type="text" class="form-control" id="exampleInputEmail" name="categoryProduct">
+                <input type="text" class="form-control" id="exampleInputEmail" name="categoryProduct" value="<%= data.productCategory %>">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="exampleInputEmail" name="priceProduct">
+                <input type="number" step="0.01" class="form-control" id="exampleInputEmail" name="priceProduct" value="<%= data.productPrice %>">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Stock</label>
-                <input type="number" class="form-control" id="exampleInputEmail" name="stockProduct">
+                <input type="number" class="form-control" id="exampleInputEmail" name="stockProduct" value="<%= data.productStock %>">
             </div>
             <button type="submit" class="btn btn-primary">Añadir Producto</button>
           </form>

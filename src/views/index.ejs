@@ -14,14 +14,21 @@
                         <li class="list-group-item"><%= data[i].productCategory %></li>
                     </ul>
                     <%if (user){%>
-                        <div class="card-body">
-                            <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-danger">Eliminar</button>
+                        <div class="card-body d-flex justify-content-around">
+                            <form action="/updateProduct" method="POST">
+                                <input type="hidden" name="productName" value = "<%= data[i].productName %>" >
+                                <button  class="btn btn-warning">Editar</button>
+                            </form>
+                            <form action="/deleteProduct/<%= data[i]._id %>" method="POST">
+                                <button class="btn btn-danger">Eliminar</button>
+                            </form>
+                            
                         </div>
                     <%}
                     else{%>
                         <div class="card-body">
-                            <button class="btn btn-success">Agregar producto</button>
+
+                            <button  class="btn btn-success">Agregar producto</button>
                         </div>
                     <%}
                     %>
