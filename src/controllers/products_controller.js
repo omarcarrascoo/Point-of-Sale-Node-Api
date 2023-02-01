@@ -4,7 +4,7 @@ const Product = require ('../models/products_model.js')
 
 
 //GET
-const viewPorducts =  (re, res, next) => {
+const viewPorducts =  (req, res, next) => {
     Product.find({}, (err, docs)=>{
         if (err) throw err;
         res.render('index', {data: docs})

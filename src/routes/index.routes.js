@@ -22,7 +22,7 @@ router.post('/login', userLogin)
 router.get('/logout', userLogout )
 
 //PRODUCTS ROUTES
-router.get('/productos', isAuthenticated, viewPorducts)
+router.get('/productos', isAuthenticated, compression(), viewPorducts)
 router.get('/newProduct', isAuthenticated, newProduct)
 router.post('/newProduct', isAuthenticated, createProduct)
 router.post('/updateProduct', isAuthenticated,updateProduct )
