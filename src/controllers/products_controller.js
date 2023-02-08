@@ -1,5 +1,6 @@
 
-const Product = require ('../models/products_model.js')
+const Product = require ('../models/products_model.js');
+const { createProductService, getAllProducts } = require('../service/product.service.js');
 
 
 
@@ -15,30 +16,13 @@ const newProduct = (req, res, next) => {
 } 
 //POST
 const createProduct = async (req, res, next ) =>{
-    const existingProduct = await Product.findOne({
-        productName: req.body.nameProduct
-    })
-    if (existingProduct) {
-        res.send('Producto en existencia')
-    }else{
-        const product = new Product({
-            productName: req.body.nameProduct,
-            productImg: req.body.imgProduct,
-            productCategory: req.body.categoryProduct,
-            productPrice: req.body.priceProduct,
-            productStock: req.body.stockProduct
-        })
-        await product.save()
-        if (product) {
-            Product.find({}, (err, docs)=>{
-                if (err) throw err;
-                res.render('index', {data: docs})
-            })
-        }else(
-            res.send('Imposible crear product')
-        )
-    }
-    
+    const newData = req.body
+    product = await createProductService(newData);
+    if (product) {
+        res.redirect('/')
+    } else(
+        res.send('Imposible crear producto')
+    )
 }
 
 const updateProduct = async (req, res, next) => {
@@ -62,11 +46,11 @@ const updatingProduct = async (req, res, next) =>{
     const id = req.params.id;
     try{
         const updateData = await Product.findByIdAndUpdate(id,{
-            productName: req.body.nameProduct,
-            productImg: req.body.imgProduct,
-            productCategory: req.body.categoryProduct,
-            productPrice: req.body.priceProduct,
-            productStock: req.body.stockProduct
+            productName: req.body.productName,
+            productImg: req.body.productImg,
+            productCategory: req.body.productCategory,
+            productPrice: req.body.productPrice,
+            productStock: req.body.productStock
         },{new:true});
         res.redirect('/productos');
     }
