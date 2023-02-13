@@ -40,6 +40,7 @@ app.use('/',require('./routes/index.routes'))
 
 
 //setting
+app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views') )
 app.engine('ejs', engine);
 app.set('view engine', 'ejs')
