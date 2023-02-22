@@ -27,8 +27,13 @@
                     <%}
                     else{%>
                         <div class="card-body">
-
-                            <button  class="btn btn-success">Agregar producto</button>
+                            <form action="/addCart" method="POST">
+                                <input type="hidden" name="productId" value = "<%= data[i]._id %>" >
+                                <input type="hidden" name="productName" value = "<%= data[i].productName %>" >
+                                <input type="hidden" name="productImg" value = "<%= data[i].productImg %>" >
+                                <input type="hidden" name="productPrice" value = "<%= data[i].productPrice %>" >
+                                <button  class="btn btn-succes">Agregar</button>
+                            </form>
                         </div>
                     <%}
                     %>

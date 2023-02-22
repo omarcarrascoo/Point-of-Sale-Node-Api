@@ -154,4 +154,9 @@ a:hover{
 }
 .max{
     margin-left: 30%;
+    margin-top: 20px;
+}
+.img_max{
+    max-height: 70px;
+    max-width: 50px;
 }

@@ -5,7 +5,7 @@ const {watchInfo, randomNumGenerator, watchIndex} = require('../controllers/info
 const { renderSignUp, userSignUp, renderLogin, userLogin, userLogout } = require('../controllers/user_controler');
 const { viewPorducts, createProduct, newProduct, updateProduct, updatingProduct, deleteProduct } = require('../controllers/products_controller');
 const { isAuthenticated } = require('../middlewares/auth.Middleware');
-const { viewCart } = require('../controllers/cart.controller');
+const { viewCart, addCart, delateCart } = require('../controllers/cart.controller');
 
 
 //GENERAL
@@ -17,8 +17,8 @@ router.get('/random:num',compression(), randomNumGenerator)
 
 //USERS ROUTES
 router.get('/signup', renderSignUp  )
-router.post('/signup', userSignUp  )
 router.get('/login', renderLogin )
+router.post('/signup', userSignUp  )
 router.post('/login', userLogin)
 router.get('/logout', userLogout )
 
@@ -32,6 +32,8 @@ router.post('/deleteProduct/:id', isAuthenticated, deleteProduct)
 
 //Cart
 router.get('/cart', viewCart)
+router.post('/addCart', addCart)
+router.get('/delateCart/:id', delateCart)
 
 
 module.exports = router;
