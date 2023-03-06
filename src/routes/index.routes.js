@@ -31,7 +31,7 @@ router.post('/update/:id', isAuthenticated, updatingProduct)
 router.post('/deleteProduct/:id', isAuthenticated, deleteProduct)
 
 //Cart
-router.get('/cart', viewCart)
+router.get('/cart',compression(), viewCart)
 router.post('/addCart', addCart)
 router.get('/delateCart/:id', delateCart)
 

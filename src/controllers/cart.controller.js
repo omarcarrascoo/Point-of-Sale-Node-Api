@@ -1,11 +1,12 @@
 const { addItemCart, getCart } = require("../service/cart.service");
 
-const viewCart = (req, res) => {
+const viewCart = async (req, res,) => {
   const user = req.user
+  console.log(user)
   if (user) {
-    const cart = getCart(user.username) 
-    console.log(cart);
-    res.render('cart',{data: cart})
+    const data = await getCart(user.username) 
+    console.log(data);
+    res.render('cart',{data})
   } else {
     if (!req.session.cart) {
       req.session.cart = [];

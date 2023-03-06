@@ -16,7 +16,7 @@ const getCart = (UserId)=>{
     if(data){
         return data
     }else {
-        return falsez
+        return false
     }
 }
 
