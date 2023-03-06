@@ -5,13 +5,13 @@ const morgan = require('morgan')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash');
-const yargs = require('yargs')
 
 
 //inicializaciones
 const app = express();
 require('./db/database');
 require('./passport/local-auth')
+//require('./service/user.service')
 
 //Middleware
 app.use(morgan('dev'))
@@ -32,9 +32,6 @@ app.use((req, res, next) =>{
     next();
 })
 
-
-
-
 //Routes
 app.use('/',require('./routes/index.routes'))
 
@@ -51,4 +48,4 @@ PORT = 4000
 //inicio de servidor
 app.listen(PORT, ()=>{
     console.log(`Servidor corriendo en el puerto ${PORT}`);
-})
+}) 

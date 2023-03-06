@@ -17,6 +17,7 @@ const readAll = async () =>{
     console.log(data);
     return data
 }
+
 module.exports = {
     readProduct,
     createProduct,

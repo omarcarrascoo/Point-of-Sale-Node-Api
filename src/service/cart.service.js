@@ -1,12 +1,26 @@
-const viewCartService = (req, res) =>{
-    if (!session.cart) {
-        req.session.cart = [];
+const { readCartItem, createCartItem, readCart, updateCartItem } = require("../DAOS/cart.dao");
+
+const addItemCart = async (newData) => {
+    const existingProduct = await readCartItem(newData)
+    if (existingProduct) {
+        const newData = 1 + existingProduct.productQuant;
+        return updateCartItem (existingProduct._id, newData )
+
+    } else {
+        const product = await createCartItem(newData)
+        return product
     }
-    const data = req.session.cart || []
-    return data
+}
+const getCart = (UserId)=>{
+    const data = readCart(UserId)
+    if(data){
+        return data
+    }else {
+        return falsez
+    }
 }
 
-
-module.exports ={
-    viewCartService
+module.exports = {
+    addItemCart,
+    getCart
 }
