@@ -22,3 +22,5 @@ Comentarios esta ehca con socket asi que algunas funcionlidades se encuentran en
 Otra cosa que se debe de cambiar es el correo y la contraseña para poder madar correos con nodeMailer, para cambiar esas configuraciones tambien es en el archivo .env
 
 Tambien hay un archivo de texto para inicar con nginx pero tendras que cambiar el root.
+
+Para checar el proyecto en RailWay este es el link: https://proyecto-final-3-production.up.railway.app/
