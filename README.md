@@ -11,7 +11,7 @@ pm2 start src/server.js --name servidor3  --watch -i 2 -- --PORT 8083
 pm2 start src/server.js --name servidor4  --watch -- --PORT 8084
 
 
-Se ocupa la libreria pm2 para iniciar diferentes servidores en diferentes puertos, y en el src/server,js se usa yargvs para obtener el puerto, se pueden modifiocar los puertos al antojo.
+Se ocupa la libreria pm2 para iniciar diferentes servidores en diferentes puertos, y en el src/server,js se usa yargvs para obtener el puerto, se pueden modifiocar los puertos al antojo y de no poner niguno el puerto por defento es el 4000.
 
 Para la configuración de la base de datos por defecto, viene mi atlas de mongo, pero no podras subir tus cosas por la ip asi que tendras que poner la tulla en el .env en la parte uqe dice URI.
 
