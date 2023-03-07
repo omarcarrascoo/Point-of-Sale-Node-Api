@@ -6,7 +6,6 @@ const {readProduct, createProduct, readAll } = require('../DAOS/product.dao.js')
 // }
 const createProductService = async (newData) => {
     const existingProduct = await readProduct(newData)
-    console.log(existingProduct);
     if (existingProduct) {
         return false
     } else {

@@ -1,18 +1,29 @@
-$(document).ready(function(){
 
-    $('.radio-group .radio').click(function(){
-        $('.radio').addClass('gray');
-        $(this).removeClass('gray');
-    });
+
+const socket = io.connect()
+
+const addMessage = (e) =>{
+    const text = document.querySelector('#texto').value
+    const author =document.querySelector('#author').value
+    const productName = document.querySelector('#productName').value
+    socket.emit('new-message', {text, author, productName })
+    return false;
+}
+
+const render = (mensajes) => {
+    const html = mensajes.map((elem, index) => {
+        return (
+            `<div>
+                <strong>${elem.author}</strong>
+                <em>${elem.text}</em>
+            </div>`
+        )
+    }).join(" ");
+    document.getElementById('menssages').innerHTML = html;
+}
+
+socket.on('mensajes', (data) =>{
+    // render(data)
     
-    $('.plus-minus .plus').click(function(){
-        var count = $(this).parent().prev().text();
-        $(this).parent().prev().html(Number(count) + 1);
-    });
-    
-    $('.plus-minus .minus').click(function(){
-        var count = $(this).parent().prev().text();
-        $(this).parent().prev().html(Number(count) - 1);
-    });
-    
-    });
+    // getComments(data)
+})

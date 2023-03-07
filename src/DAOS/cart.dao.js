@@ -18,7 +18,6 @@ const createCartItem = async (newData) => {
 }
 const readCart = async (UserId) =>{
     const data = await Cart.find({UserId : UserId})
-    console.log(data)
     return data
 }
 const updateCartItem = async (id, newData ) =>{

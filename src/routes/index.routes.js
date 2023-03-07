@@ -6,6 +6,7 @@ const { renderSignUp, userSignUp, renderLogin, userLogin, userLogout } = require
 const { viewPorducts, createProduct, newProduct, updateProduct, updatingProduct, deleteProduct } = require('../controllers/products_controller');
 const { isAuthenticated } = require('../middlewares/auth.Middleware');
 const { viewCart, addCart, delateCart } = require('../controllers/cart.controller');
+const { getComments } = require('../controllers/comments.controller');
 
 
 //GENERAL
@@ -29,6 +30,10 @@ router.post('/newProduct', isAuthenticated, createProduct)
 router.post('/updateProduct', isAuthenticated,updateProduct )
 router.post('/update/:id', isAuthenticated, updatingProduct)
 router.post('/deleteProduct/:id', isAuthenticated, deleteProduct)
+
+//Comments
+router.post('/comments', getComments )
+router.get('/comments/:id', getComments )
 
 //Cart
 router.get('/cart',compression(), viewCart)
