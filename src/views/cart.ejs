@@ -5,7 +5,8 @@
             <div class="title">
                 <div class="row">
                     <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+                    <div class="col align-self-center text-right text-muted">
+                        <%= data.length %>items</div>
                 </div>
             </div>  
             <% if (data.length == 0) { %>
@@ -37,7 +38,7 @@
             <hr>
             <div class="row">
                 <div class="col" style="padding-left:0;">ITEMS <%= data.length %></div>
-                <div class="col text-right">&euro; 132.00</div>
+                <div class="col text-right">&dollar;; <%= total%></div>
             </div>
             <form>
                 <p>SHIPPING</p>

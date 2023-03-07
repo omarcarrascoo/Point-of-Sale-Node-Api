@@ -1,4 +1,4 @@
-const { addItemCart, getCart } = require("../service/cart.service");
+const { addItemCart, getCart, sumCart } = require("../service/cart.service");
 
 const viewCart = async (req, res,) => {
   const user = req.user
@@ -6,17 +6,21 @@ const viewCart = async (req, res,) => {
   if (user) {
     const data = await getCart(user.username) 
     console.log(data);
-    res.render('cart',{data})
+
+    const total = getTotal(data)
+    res.render('cart', {data, total})
   } else {
     if (!req.session.cart) {
       req.session.cart = [];
     }
-    const data = req.session.cart
-    console.log(data);
-    res.render('cart', {data})
+    const data = req.session.cart 
+    const total = getTotal(data)
+    res.render('cart', {data, total})
   }
 }
-
+const getTotal = (data)=>{
+  return sumCart(data)
+}
 const addCart = (req, res) => {
   const item = req.body;
   const user = req.user

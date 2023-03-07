@@ -19,8 +19,17 @@ const getCart = (UserId)=>{
         return false
     }
 }
+const sumCart = (data) => {
+    console.log(data)
+    let totalPrice = 0;
+    for (let i = 0; i < data.length; i++) {
+     totalPrice += parseFloat(data[i].productPrice);
+        }
+    return totalPrice
+}
 
 module.exports = {
     addItemCart,
-    getCart
+    getCart,
+    sumCart
 }

@@ -47,7 +47,7 @@
                                         <input type="hidden" name="productId" value = "<%= data[i]._id %>" >
                                         <input type="hidden" name="productName" value = "<%= data[i].productName %>" >
                                         <input type="hidden" name="productImg" value = "<%= data[i].productImg %>" >
-                                        <input type="hidden" name="productPrice" value = "<%= data[i].productPrice %>" >
+                                        <input type="hidden" name="productPrice" value = "<%=parseInt(data[i].productPrice ) %>" >
                                         <button  class="btn btn-succes">Agregar</button>
                                    <% } %>
                                
