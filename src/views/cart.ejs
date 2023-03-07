@@ -34,23 +34,23 @@
             <div class="back-to-shop"><a href="/">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
         </div>
         <div class="col-md-4 summary">
-            <div><h5><b>Summary</b></h5></div>
+            <div><h5><b>Cuenta</b></h5></div>
             <hr>
             <div class="row">
                 <div class="col" style="padding-left:0;">ITEMS <%= data.length %></div>
                 <div class="col text-right">&dollar;; <%= total%></div>
             </div>
             <form>
-                <p>SHIPPING</p>
-                <select><option class="text-muted">Standard-Delivery- &dollar;;5.00</option></select>
-                <p>GIVE CODE</p>
-                <input id="code" placeholder="Enter your code">
+                <p>Envio</p>
+                <select><option class="text-muted">Envio-estandar &dollar;;5.00</option></select>
+                <p>COdigo de Descuento</p>
+                <input id="code" placeholder="Pon tu codigo">
             </form>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&dollar;; 137.00</div>
+                <div class="col">Precio total</div>
+                <div class="col text-right">&dollar;; <%= total + 5%></div>
             </div>
-            <button class="btn">CHECKOUT</button>
+            <button class="btn">Pagar</button>
         </div>
     </div>
     
