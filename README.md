@@ -19,4 +19,6 @@ Hay 4 bases de datos: carrito, comnetarios, productos, usuario, y cada una ase p
 
 Comentarios esta ehca con socket asi que algunas funcionlidades se encuentran en un archivo separado llamado script.js (RUTA: src/public/assets/js/script.js)
 
+Otra cosa que se debe de cambiar es el correo y la contraseña para poder madar correos con nodeMailer, para cambiar esas configuraciones tambien es en el archivo .env
+
 Tambien hay un archivo de texto para inicar con nginx pero tendras que cambiar el root.

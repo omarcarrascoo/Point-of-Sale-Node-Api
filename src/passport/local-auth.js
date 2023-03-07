@@ -1,4 +1,5 @@
 const passport = require('passport');
+const { sendMail } = require('../mail/nodeMailer');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user')
 
@@ -25,6 +26,7 @@ passport.use('local-signup', new LocalStrategy({
         newUser.username = username;
         newUser.password = newUser.encryptPassword(password);
         await newUser.save()
+        sendMail()
         done(null, newUser);
     }
 
