@@ -33,7 +33,7 @@ router.post('/deleteProduct/:id', isAuthenticated, deleteProduct)
 
 //Comments
 router.post('/comments', getComments )
-router.get('/comments/:id', getComments )
+router.get('/comments', getComments )
 
 //Cart
 router.get('/cart',compression(), viewCart)

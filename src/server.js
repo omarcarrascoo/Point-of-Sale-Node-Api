@@ -9,6 +9,7 @@ const session = require('express-session')
 const flash = require('connect-flash');
 const { newComment } = require('./controllers/comments.controller')
 const { readComments } = require('./DAOS/comments.dao')
+const yargs = require('yargs')
 
 
 
@@ -51,7 +52,7 @@ app.engine('ejs', engine);
 app.set('view engine', 'ejs')
 
 const setComments = () =>{
-    
+
 }
 const msj = session.comments
 console.log(session.comments)
@@ -63,9 +64,9 @@ console.log(session.comments)
         io.sockets.emit('mensajes', msj)
     })
 })
-
-// PORT = yargs.argv.PORT
-PORT = 4000
+const argv = yargs.argv;
+PORT = argv.PORT
+//PORT = 4000
 // app.set('port', PORT.puerto || 2002);
 
 //inicio de servidor
