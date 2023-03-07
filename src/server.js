@@ -65,7 +65,7 @@ console.log(session.comments)
     })
 })
 const argv = yargs.argv;
-PORT = argv.PORT
+PORT = argv.PORT || 4000
 //PORT = 4000
 // app.set('port', PORT.puerto || 2002);
 
