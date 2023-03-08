@@ -8,8 +8,8 @@ const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash');
 const { newComment } = require('./controllers/comments.controller')
-const { readComments } = require('./DAOS/comments.dao')
 const yargs = require('yargs')
+require('dotenv').config()
 
 
 
@@ -55,7 +55,6 @@ const setComments = () =>{
 
 }
 const msj = session.comments
-console.log(session.comments)
  io.on ('connection', (cliente)=>{
     console.log('Un cliente se conecto')
     cliente.emit('mensajes', msj)
@@ -65,7 +64,7 @@ console.log(session.comments)
     })
 })
 const argv = yargs.argv;
-PORT = argv.PORT || 4000
+PORT = argv.PORT || process.env.PORT
 //PORT = 4000
 // app.set('port', PORT.puerto || 2002);
 
