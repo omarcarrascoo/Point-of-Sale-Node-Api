@@ -23,4 +23,4 @@ Otra cosa que se debe de cambiar es el correo y la contraseña para poder madar 
 
 Tambien hay un archivo de texto para inicar con nginx pero tendras que cambiar el root.
 
-Para checar el proyecto en RailWay este es el link: https://proyecto-final-3-production.up.railway.app/
+Para checar el proyecto en RailWay este es el link: https://proyecto-final-3-production-f998.up.railway.app/
