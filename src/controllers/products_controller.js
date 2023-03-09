@@ -1,21 +1,43 @@
-
-const Product = require ('../models/products_model.js');
-const { createProductService, getAllProducts } = require('../service/product.service.js');
-
+const Product = require('../models/products_model.js');
+const {
+    createProductService,
+    getAllProducts,
+    getCategory,
+    findProductId,
+    upDateProductById,
+    delatePorductById
+} = require('../service/product.service.js');
 
 
 //GET
-const viewPorducts =  (req, res, next) => {
-    Product.find({}, (err, docs)=>{
-        if (err) throw err;
-        res.render('index', {data: docs})
-    })
+const viewPorducts = async (req, res, next) => {
+    try {
+        const data = await getAllProducts()
+        res.render('index', {
+            data: data
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500)
+    }
 }
 const newProduct = (req, res, next) => {
     res.render('newProduct')
-} 
+}
+const viewCategory = async (req, res) => {
+    try {
+        const category = req.params.category;
+        const data = await getCategory(category);
+        res.render('index', {
+            data: data
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500)
+    }
+}
 //POST
-const createProduct = async (req, res, next ) =>{
+const createProduct = async (req, res, next) => {
     const newData = req.body
     product = await createProductService(newData);
     if (product) {
@@ -26,53 +48,49 @@ const createProduct = async (req, res, next ) =>{
 }
 
 const updateProduct = async (req, res, next) => {
-    const existingProduct = await Product.findOne({
-        productName: req.body.productName
-    })
-    if(existingProduct){
-        res.render('updateProduct', {data: existingProduct})
-    }
-    else{
-        setTimeout(() => {
-            Product.find({}, (err, docs)=>{
-                if (err) throw err;
-                res.render('index', {data: docs})
-            })
-        }, 3000);
-
+    try {
+        const existingProduct = await findProductId(req.params.id)
+        res.render('updateProduct', {
+            data: existingProduct
+        })
+    } catch (error) {
+        console.log(error)
+        res.render('error',{
+            error
+        })
     }
 }
-const updatingProduct = async (req, res, next) =>{
+const updatingProduct = async (req, res, next) => {
     const id = req.params.id;
-    try{
-        const updateData = await Product.findByIdAndUpdate(id,{
-            productName: req.body.productName,
-            productImg: req.body.productImg,
-            productCategory: req.body.productCategory,
-            productPrice: req.body.productPrice,
-            productStock: req.body.productStock
-        },{new:true});
+    const data = req.body
+    try {
+        const updateProduct  = await upDateProductById(id, data)
+        console.log(updateProduct)
         res.redirect('/productos');
-    }
-    catch (error){
-        res.render('error', {error});
+    } catch (error) {
+        console.log(error)
+        res.render('error', {
+            error
+        });
     }
 }
-const deleteProduct = async (req, res, next) =>{
+const deleteProduct = async (req, res, next) => {
     const id = req.params.id;
-    try{
-        const deleteData = await Product.findByIdAndDelete(id);
+    try {
+        const delateProduct = delatePorductById(id)
         res.redirect('/productos');
-    }
-    catch (error){
-        res.render('error', {error});
+    } catch (error) {
+        res.render('error', {
+            error
+        });
     }
 }
-module.exports ={
+module.exports = {
     viewPorducts,
     createProduct,
     newProduct,
     updateProduct,
     updatingProduct,
-    deleteProduct
+    deleteProduct,
+    viewCategory
 }

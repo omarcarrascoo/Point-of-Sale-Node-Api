@@ -2,6 +2,7 @@
     <main class="max container-sm mt-30 flex-wrap" style="margin-top: 50px;">
         <h1 style="margin-bottom: 20px;">Añadir Productos</h1>
         <form class="container-sm" method="post" action="/update/<%= data._id %>">
+            <input type="hidden" value="<%= data._id %>">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label" >Nombre del Producto</label>
               <input type="text" class="form-control" id="exampleInputEmail" name="productName" value="<%= data.productName %>">
